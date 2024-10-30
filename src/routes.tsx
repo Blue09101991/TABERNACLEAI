@@ -455,29 +455,29 @@ export default function useRoutes() {
     return adminEmails;
   };
 
-  useEffect(() => {
-    const updateRoutes = async () => {
-      const adminEmails = await fetchAdminEmails();
-      auth.onAuthStateChanged((user) => {
-        // Check if the user's email is in the fetched admin emails
-        if (adminEmails.has(user?.email)) {
-          setDynamicRoutes((prevRoutes) => [
-            ...prevRoutes,
-            // adminRoute
-          ]);
-        } else {
-          setDynamicRoutes((prevRoutes) =>
-            prevRoutes.filter(route => route.name !== 'Admin Pages')
-          );
-        }
-      });
-    };
+  // useEffect(() => {
+  //   const updateRoutes = async () => {
+  //     const adminEmails = await fetchAdminEmails();
+  //     auth.onAuthStateChanged((user) => {
+  //       // Check if the user's email is in the fetched admin emails
+  //       if (adminEmails.has(user?.email)) {
+  //         setDynamicRoutes((prevRoutes) => [
+  //           ...prevRoutes,
+  //           // adminRoute
+  //         ]);
+  //       } else {
+  //         setDynamicRoutes((prevRoutes) =>
+  //           prevRoutes.filter(route => route.name !== 'Admin Pages')
+  //         );
+  //       }
+  //     });
+  //   };
   
-    updateRoutes();
+  //   updateRoutes();
   
-    // No need to return unsubscribe function from onAuthStateChanged 
-    // as it's handled within the async updateRoutes function
-  }, []);
+  //   // No need to return unsubscribe function from onAuthStateChanged 
+  //   // as it's handled within the async updateRoutes function
+  // }, []);
 
   return dynamicRoutes;
 }
