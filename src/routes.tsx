@@ -463,7 +463,7 @@ export default function useRoutes() {
         if (adminEmails.has(user?.email)) {
           setDynamicRoutes((prevRoutes) => [
             ...prevRoutes,
-            adminRoute
+            // adminRoute
           ]);
         } else {
           setDynamicRoutes((prevRoutes) =>
