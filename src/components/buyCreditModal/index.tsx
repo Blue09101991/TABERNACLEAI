@@ -100,11 +100,12 @@ const BuyCreditsModal: React.FC<BuyCreditsModalProps> = ({ isOpen, onClose }) =>
             {showPayPal ? (
               <>
                 <PayPalScriptProvider options={{ clientId: paypalClientId || '' }}>
-                  <PayPalButtons
+                <PayPalButtons
                     createOrder={(data, actions) => {
                       return actions.order?.create({
                         purchase_units: [{
                           amount: {
+                            currency_code: "USD",  // Specify the currency code
                             value: (amount && (amount / 100).toString()) || '0'  // Convert cents to dollars and ensure it's a string
                           }
                         }]
@@ -120,6 +121,7 @@ const BuyCreditsModal: React.FC<BuyCreditsModalProps> = ({ isOpen, onClose }) =>
                       }
                     }}
                   />
+
                 </PayPalScriptProvider>
                 <Button mt={4} onClick={() => setShowPayPal(false)}>Back</Button>
               </>
