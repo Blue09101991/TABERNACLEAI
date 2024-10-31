@@ -12,7 +12,7 @@ import { Alert } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { useBreakpointValue } from '@chakra-ui/react';
 
-import BuyCreditsModal from '@/components/buyCreditModal';
+// import BuyCreditsModal from '@/components/buyCreditModal';
 
 
 import {
